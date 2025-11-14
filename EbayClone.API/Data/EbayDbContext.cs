@@ -20,6 +20,8 @@ namespace EbayClone.API.Models
         public DbSet<ShippingEvent> ShippingEvents { get; set; }
         public DbSet<EscrowInfo> Escrows { get; set; }
         public DbSet<ReturnRequest> ReturnRequests { get; set; }
+        public DbSet<ShippingRegion> ShippingRegions { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

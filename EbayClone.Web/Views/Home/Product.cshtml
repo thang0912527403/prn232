@@ -56,11 +56,10 @@
                 <div class="mb-3">
                     <label class="form-label">Shipping Region</label>
                     <select name="ShippingRegion" class="form-select" required>
-                        <option value="Hanoi">Hanoi - $20</option>
-                        <option value="HoChiMinh">Ho Chi Minh - $25</option>
-                        <option value="DaNang">Da Nang - $30</option>
-                        <option value="Domestic">Other Domestic - $35</option>
-                        <option value="International">International - $100</option>
+                        @foreach (ShippingRegion s in ViewBag.ShippingRegions)
+                        {
+                            <option value="@s.Name">@s.Name - $@s.Cost</option>
+                        }
                     </select>
                 </div>
 

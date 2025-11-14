@@ -565,6 +565,44 @@
           }
         }
       }
+    },
+    "/api/Product/shippingregion": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShippingRegion"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShippingRegion"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShippingRegion"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1137,6 +1175,24 @@
               "$ref": "#/components/schemas/ShippingEvent"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShippingRegion": {
+        "type": "object",
+        "properties": {
+          "shippingRegionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

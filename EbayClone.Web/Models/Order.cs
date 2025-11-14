@@ -181,6 +181,12 @@ public class Product
 }
 public class Category
 {
-    public string categoryId { get; set; } 
+    public string categoryId { get; set; }
     public string Name { get; set; } = string.Empty;
+}
+public class ShippingRegion
+{
+    public int ShippingRegionId { get; set; }
+    public string Name { get; set; }
+    public decimal Cost { get; set; }
 }

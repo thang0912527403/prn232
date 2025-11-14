@@ -59,7 +59,7 @@ namespace EbayClone.API.Services
             }
 
             // Trả kết quả
-            return await query.Include(p=>p.Seller).ToListAsync();
+            return await query.Include(p => p.Seller).ToListAsync();
         }
 
 
@@ -76,11 +76,11 @@ namespace EbayClone.API.Services
             productId = productId.ToUpper();
 
             var product = await _dbContext.Products
-                .Include(p => p.Seller) 
-                .FirstOrDefaultAsync(p => p.ProductId == productId); 
+                .Include(p => p.Seller)
+                .FirstOrDefaultAsync(p => p.ProductId == productId);
             if (product == null)
             {
-                return null; 
+                return null;
             }
             if (product.Seller == null)
             {
@@ -95,6 +95,10 @@ namespace EbayClone.API.Services
                 product = product,
                 sellername = product.Seller.Email,
             };
+        }
+        public async Task<List<ShippingRegion>> GetShippingRegionsAsync()
+        {
+            return await _dbContext.ShippingRegions.ToListAsync();
         }
     }
 }

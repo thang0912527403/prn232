@@ -320,5 +320,25 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "EbayClone.API.Controllers.ProductController",
+    "Method": "GetShippingRegions",
+    "RelativePath": "api/Product/shippingregion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EbayClone.API.Models.ShippingRegion, EbayClone.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

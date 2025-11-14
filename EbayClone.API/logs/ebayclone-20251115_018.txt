@@ -1,0 +1,215 @@
+2025-11-15 02:15:57.966 +07:00 [INF] Starting EbayClone.API
+2025-11-15 02:16:02.234 +07:00 [ERR] Failed to initialize RabbitMQ connection. Retrying later.
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at EbayClone.API.Services.RabbitMQService.InitializeConnection() in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\RabbitMQService.cs:line 29
+2025-11-15 02:16:02.355 +07:00 [INF] Order Timeout Background Service started
+2025-11-15 02:16:02.564 +07:00 [INF] Escrow Release Background Service started
+2025-11-15 02:16:02.583 +07:00 [INF] EmailConsumerService started
+2025-11-15 02:16:06.656 +07:00 [ERR] Failed to initialize RabbitMQ connection. Retrying later.
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at EbayClone.API.Services.RabbitMQService.InitializeConnection() in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\RabbitMQService.cs:line 29
+2025-11-15 02:16:06.711 +07:00 [ERR] Cannot start consuming. RabbitMQ channel is unavailable for queue: order.email
+2025-11-15 02:16:16.836 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:16.942 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:16.970 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.242 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.262 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.278 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.304 +07:00 [WRN] Navigations 'PaymentInfo.Order' and 'Order.Payment' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.320 +07:00 [WRN] Navigations 'PaymentInfo.Order' and 'Order.Payment' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.335 +07:00 [WRN] Navigations 'PaymentInfo.Order' and 'Order.Payment' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.363 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.382 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.402 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.420 +07:00 [WRN] Navigations 'ShippingInfo.Order' and 'Order.Shipping' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.435 +07:00 [WRN] Navigations 'ShippingInfo.Order' and 'Order.Shipping' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.448 +07:00 [WRN] Navigations 'ShippingInfo.Order' and 'Order.Shipping' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.467 +07:00 [WRN] Navigations 'Order.Escrow' and 'EscrowInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.483 +07:00 [WRN] Navigations 'Order.Escrow' and 'EscrowInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.500 +07:00 [WRN] Navigations 'Order.Escrow' and 'EscrowInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.516 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.538 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:17.556 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:16:18.209 +07:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:16:18.217 +07:00 [WRN] No store type was specified for the decimal property 'ShippingFee' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:16:18.230 +07:00 [WRN] No store type was specified for the decimal property 'Cost' on entity type 'ShippingRegion'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:16:18.245 +07:00 [WRN] No store type was specified for the decimal property 'Rating' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:16:20.008 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-11-15 02:16:20.016 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-11-15 02:16:41.781 +07:00 [ERR] Error creating order
+System.InvalidOperationException: The LINQ expression 'DbSet<ShippingRegion>()
+    .Where(s => s.Name.Equals(
+        value: __region_0, 
+        comparisonType: OrdinalIgnoreCase))' could not be translated. Additional information: Translation of the 'string.Equals' overload with a 'StringComparison' parameter is not supported. See https://go.microsoft.com/fwlink/?linkid=2129535 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass9_0`1.<Execute>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at EbayClone.API.Services.PaymentService.CalculateShippingFee(String region) in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\PaymentService.cs:line 216
+   at EbayClone.API.Services.OrderService.CreateOrderAsync(CreateOrderRequest request) in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\OrderService.cs:line 53
+   at EbayClone.API.Controllers.OrdersController.CreateOrder(CreateOrderRequest request) in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Controllers\OrderController.cs:line 26
+2025-11-15 02:16:48.874 +07:00 [ERR] Error creating order
+System.InvalidOperationException: The LINQ expression 'DbSet<ShippingRegion>()
+    .Where(s => s.Name.Equals(
+        value: __region_0, 
+        comparisonType: OrdinalIgnoreCase))' could not be translated. Additional information: Translation of the 'string.Equals' overload with a 'StringComparison' parameter is not supported. See https://go.microsoft.com/fwlink/?linkid=2129535 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass9_0`1.<Execute>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at EbayClone.API.Services.PaymentService.CalculateShippingFee(String region) in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\PaymentService.cs:line 216
+   at EbayClone.API.Services.OrderService.CreateOrderAsync(CreateOrderRequest request) in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\OrderService.cs:line 53
+   at EbayClone.API.Controllers.OrdersController.CreateOrder(CreateOrderRequest request) in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Controllers\OrderController.cs:line 26
+2025-11-15 02:17:43.170 +07:00 [INF] Starting EbayClone.API
+2025-11-15 02:17:47.506 +07:00 [ERR] Failed to initialize RabbitMQ connection. Retrying later.
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at EbayClone.API.Services.RabbitMQService.InitializeConnection() in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\RabbitMQService.cs:line 29
+2025-11-15 02:17:47.688 +07:00 [INF] Order Timeout Background Service started
+2025-11-15 02:17:48.162 +07:00 [INF] Escrow Release Background Service started
+2025-11-15 02:17:48.204 +07:00 [INF] EmailConsumerService started
+2025-11-15 02:17:52.291 +07:00 [ERR] Failed to initialize RabbitMQ connection. Retrying later.
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at EbayClone.API.Services.RabbitMQService.InitializeConnection() in C:\Users\pc\Source\Repos\prn232\EbayClone.API\Services\RabbitMQService.cs:line 29
+2025-11-15 02:17:52.356 +07:00 [ERR] Cannot start consuming. RabbitMQ channel is unavailable for queue: order.email
+2025-11-15 02:17:57.477 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.599 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.620 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.906 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.927 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.943 +07:00 [WRN] Navigations 'Order.Payment' and 'PaymentInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.976 +07:00 [WRN] Navigations 'PaymentInfo.Order' and 'Order.Payment' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:57.995 +07:00 [WRN] Navigations 'PaymentInfo.Order' and 'Order.Payment' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.016 +07:00 [WRN] Navigations 'PaymentInfo.Order' and 'Order.Payment' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.039 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.055 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.073 +07:00 [WRN] Navigations 'Order.Shipping' and 'ShippingInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.092 +07:00 [WRN] Navigations 'ShippingInfo.Order' and 'Order.Shipping' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.107 +07:00 [WRN] Navigations 'ShippingInfo.Order' and 'Order.Shipping' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.121 +07:00 [WRN] Navigations 'ShippingInfo.Order' and 'Order.Shipping' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.148 +07:00 [WRN] Navigations 'Order.Escrow' and 'EscrowInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.165 +07:00 [WRN] Navigations 'Order.Escrow' and 'EscrowInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.178 +07:00 [WRN] Navigations 'Order.Escrow' and 'EscrowInfo.Order' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.201 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.218 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.231 +07:00 [WRN] Navigations 'EscrowInfo.Order' and 'Order.Escrow' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-11-15 02:17:58.838 +07:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:17:58.853 +07:00 [WRN] No store type was specified for the decimal property 'ShippingFee' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:17:58.867 +07:00 [WRN] No store type was specified for the decimal property 'Cost' on entity type 'ShippingRegion'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:17:58.883 +07:00 [WRN] No store type was specified for the decimal property 'Rating' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-11-15 02:18:00.619 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-11-15 02:18:00.628 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-11-15 02:18:15.399 +07:00 [INF] Order created: f51d390c-af28-4ac0-8792-9fec16b6f143, Total: $701.00

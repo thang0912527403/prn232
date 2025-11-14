@@ -42,5 +42,11 @@ namespace EbayClone.API.Controllers
             }
             return Ok(product);
         }
+        [HttpGet("shippingregion")]
+        public async Task<ActionResult<List<ShippingRegion>>> GetShippingRegions()
+        {
+            var regions = await _productService.GetShippingRegionsAsync();
+            return Ok(regions);
+        }
     }
 }

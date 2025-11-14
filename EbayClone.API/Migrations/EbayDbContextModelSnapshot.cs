@@ -370,6 +370,26 @@ namespace EbayClone.API.Migrations
                     b.ToTable("Shippings");
                 });
 
+            modelBuilder.Entity("EbayClone.API.Models.ShippingRegion", b =>
+                {
+                    b.Property<int>("ShippingRegionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShippingRegionId"));
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ShippingRegionId");
+
+                    b.ToTable("ShippingRegions");
+                });
+
             modelBuilder.Entity("EbayClone.API.Models.User", b =>
                 {
                     b.Property<string>("UserId")
@@ -410,7 +430,7 @@ namespace EbayClone.API.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "92a2ef13-725b-4549-9ab2-10bd090ddecc",
+                            UserId = "91492a58-55cc-46e0-9c79-077dd0e79961",
                             Email = "admin@ebayclone.com",
                             PasswordHash = "admin123",
                             Rating = 5.0m,

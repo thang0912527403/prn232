@@ -20,7 +20,7 @@ public class HomeController : Controller
     }
     private readonly IConfiguration _configuration;
 
-    public async Task<IActionResult> Index(int? page, int? pagination,string? search, string? categoryId,string? orderBy,string? order)
+    public async Task<IActionResult> Index(int? page, int? pagination, string? search, string? categoryId, string? orderBy, string? order)
     {
         if (!page.HasValue) page = 1;
         if (!pagination.HasValue) pagination = 16;
@@ -28,9 +28,9 @@ public class HomeController : Controller
         string requestUrl = $"{ApiBaseUrl}Product?" +
                         $"page={page}&" +
                         $"pagination={pagination}&" +
-                        $"search={search }&" +
+                        $"search={search}&" +
                         $"categoryId={categoryId}&" +
-                        $"orderBy={orderBy }&" +
+                        $"orderBy={orderBy}&" +
                         $"order={order}";
         var response = await client.GetAsync(requestUrl);
         var json = await response.Content.ReadAsStringAsync();
@@ -46,7 +46,7 @@ public class HomeController : Controller
         var json2 = await response2.Content.ReadAsStringAsync();
         Console.WriteLine("cat" + json2);
         var categories = JsonSerializer.Deserialize<List<Category>>(json2, options);
-        if (products.Total%pagination!=0)
+        if (products.Total % pagination != 0)
         {
             ViewBag.TotalPages = products.Total / pagination + 1;
         }
@@ -81,7 +81,12 @@ public class HomeController : Controller
         {
             return NotFound();
         }
+        requestUrl = $"{ApiBaseUrl}Product/shippingregion";
+        response = await client.GetAsync(requestUrl);
+        json = await response.Content.ReadAsStringAsync();
+        var regions = JsonSerializer.Deserialize<List<ShippingRegion>>(json, options);
         ViewBag.SellerName = product.sellerName;
+        ViewBag.ShippingRegions = regions;
         return View(product.product);
     }
 
@@ -92,9 +97,9 @@ public class HomeController : Controller
         try
         {
             var orders = new Order();
-            orders.UserId=model.UserId;
+            orders.UserId = model.UserId;
             decimal total = 0;
-            foreach(var item in model.Items)
+            foreach (var item in model.Items)
             {
                 item.orderId = orders.OrderId;
                 total = total + item.Quantity * item.Price;
@@ -104,7 +109,7 @@ public class HomeController : Controller
             orders.Status = OrderStatus.PendingPayment;
             orders.ShippingRegion = model.ShippingRegion;
             orders.TotalAmount = total;
-            orders.UserId = "1AEA426A-718D-4726-965C-90948EB39BBB";
+            orders.UserId = "35911088-3782-48AB-BC92-D9CB277A5DCB";
             var client = _httpClientFactory.CreateClient("EbayAPI");
             var json = JsonSerializer.Serialize(orders);
             Console.WriteLine(json);
@@ -261,7 +266,7 @@ public class HomeController : Controller
         public int Total { get; set; }
         public List<Product> Data { get; set; } = new();
     }
-    private class  ProductDto
+    private class ProductDto
     {
         public Product product { get; set; }
         public string sellerName { get; set; }

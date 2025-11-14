@@ -1,4 +1,4 @@
-using AspNetCoreRateLimit;
+﻿using AspNetCoreRateLimit;
 using EbayClone.API;
 using EbayClone.API.Middleware;
 using EbayClone.API.Models;
@@ -94,8 +94,8 @@ builder.Services.AddSingleton<IConnectionFactory>(sp =>
 });
 
 // Register Services
-builder.Services.AddSingleton<RabbitMQService>();
-builder.Services.AddSingleton<PaymentService>();
+builder.Services.AddSingleton<RabbitMQService>(); 
+builder.Services.AddScoped<PaymentService>();
 builder.Services.AddSingleton<ShippingService>();
 builder.Services.AddSingleton<EmailService>();
 builder.Services.AddScoped<OrderService>();

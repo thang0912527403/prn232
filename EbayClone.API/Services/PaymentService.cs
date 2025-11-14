@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using EbayClone.API.Models;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -13,16 +14,21 @@ public class PaymentService
     private DateTime _tokenExpiry = DateTime.MinValue;
     private readonly string _ppclienId;
     private readonly string _ppclienSecret;
-    public PaymentService(HttpClient httpClient, IConfiguration configuration, ILogger<PaymentService> logger)
+    private readonly EbayDbContext _dbContext;
+
+    public PaymentService(HttpClient httpClient, IConfiguration configuration, ILogger<PaymentService> logger, EbayDbContext dbContext)
     {
         _httpClient = httpClient;
         _configuration = configuration;
         _logger = logger;
-        _ppclienId= _configuration["PayPal:ClientId"] ?? "";
-        _ppclienSecret= _configuration["PayPal:ClientSecret"] ?? "";
+        _dbContext = dbContext;
+
+        _ppclienId = _configuration["PayPal:ClientId"] ?? "";
+        _ppclienSecret = _configuration["PayPal:ClientSecret"] ?? "";
         var apiUrl = _configuration["PayPal:ApiUrl"] ?? "https://api-m.sandbox.paypal.com";
         _httpClient.BaseAddress = new Uri(apiUrl);
     }
+
 
     private async Task<string> GetAccessTokenAsync()
     {
@@ -207,16 +213,15 @@ public class PaymentService
 
     public decimal CalculateShippingFee(string region)
     {
-        return region.ToLower() switch
-        {
-            "hanoi" => 20m,
-            "hochiminh" => 25m,
-            "danang" => 30m,
-            "domestic" => 35m,
-            "international" => 100m,
-            _ => 30m
-        };
+        var shippingRegion = _dbContext.ShippingRegions
+            .FirstOrDefault(s => s.Name.ToLower() == region.ToLower());
+
+        if (shippingRegion == null)
+            throw new Exception("Region not found");
+
+        return shippingRegion.Cost;
     }
+
 
     public decimal ApplyDiscount(decimal amount, string? couponCode)
     {

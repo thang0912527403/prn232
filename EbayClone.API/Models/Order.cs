@@ -32,7 +32,8 @@ public class Product
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }
-public class Category {
+public class Category
+{
     public string CategoryId { get; set; } = Guid.NewGuid().ToString();
     [Required]
     public string Name { get; set; } = string.Empty;
@@ -94,7 +95,7 @@ public class Order
     public string? ShippingInfoId { get; set; }
     public string? EscrowInfoId { get; set; }
 
-    [ForeignKey(nameof(PaymentInfoId))] 
+    [ForeignKey(nameof(PaymentInfoId))]
     public PaymentInfo? Payment { get; set; }
 
     [ForeignKey(nameof(ShippingInfoId))]
@@ -312,4 +313,10 @@ public class DisputeRequest
 {
     public string OrderId { get; set; } = string.Empty;
     public string Reason { get; set; } = string.Empty;
+}
+public class ShippingRegion
+{
+    public int ShippingRegionId { get; set; }
+    public string Name { get; set; }
+    public decimal Cost { get; set; }
 }

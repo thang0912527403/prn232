@@ -1,8 +1,0 @@
-2025-11-14 07:38:07.294 +07:00 [INF] Starting EbayClone.API
-2025-11-14 07:38:07.373 +07:00 [INF] Order Timeout Background Service started
-2025-11-14 07:38:07.473 +07:00 [INF] Escrow Release Background Service started
-2025-11-14 07:38:07.480 +07:00 [INF] RabbitMQ Consumer Service started
-2025-11-14 07:38:16.339 +07:00 [INF] Starting EbayClone.API
-2025-11-14 07:38:16.404 +07:00 [INF] Order Timeout Background Service started
-2025-11-14 07:38:16.494 +07:00 [INF] Escrow Release Background Service started
-2025-11-14 07:38:16.501 +07:00 [INF] RabbitMQ Consumer Service started

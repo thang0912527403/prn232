@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "H95vR5eFMOk=",
+  "dgSpecHash": "c4iDi1/pe7w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\thang\\source\\repos\\HE186961_DuongXuanThang_Ass1\\FUNewsManagementSystem\\EbayClone\\EbayClone.Web\\EbayClone.Web.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Source\\Repos\\prn232\\EbayClone.Web\\EbayClone.Web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\thang\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\microsoft.visualstudio.azure.containers.tools.targets.1.22.1.nupkg.sha512"
+    "C:\\Users\\pc\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\microsoft.visualstudio.azure.containers.tools.targets.1.22.1.nupkg.sha512"
   ],
   "logs": []
 }
