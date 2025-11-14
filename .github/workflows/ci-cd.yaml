@@ -20,27 +20,27 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore
+      - name: Restore dependencies
+        run: dotnet restore
 
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
 
-    - name: Run unit tests
-      run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
+      - name: Run unit tests
+        run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
 
-    - name: Upload coverage reports
-      uses: codecov/codecov-action@v3
-      with:
-        files: ./coverage.cobertura.xml
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.cobertura.xml
 
   # Security Scan
   security-scan:
@@ -48,21 +48,21 @@ jobs:
     needs: build-and-test
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        scan-type: 'fs'
-        scan-ref: '.'
-        format: 'sarif'
-        output: 'trivy-results.sarif'
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
 
-    - name: Upload Trivy results to GitHub Security
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: 'trivy-results.sarif'
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
 
   # Build and Push Docker Image
   docker-build-push:
@@ -75,40 +75,40 @@ jobs:
       packages: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    - name: Log in to Container Registry
-      uses: docker/login-action@v2
-      with:
-        registry: ${{ env.DOCKER_REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v4
-      with:
-        images: ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=sha,prefix={{branch}}-
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix={{branch}}-
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   # Deploy to Kubernetes
   deploy:
@@ -118,31 +118,32 @@ jobs:
     environment: production
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup kubectl
-      uses: azure/setup-kubectl@v3
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
 
-    - name: Configure kubectl
-      run: |
-        mkdir -p $HOME/.kube
-        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
+      - name: Configure kubectl
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
 
-    - name: Update deployment image
-      run: |
-        kubectl set image deployment/api-deployment \
-          api=${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-          -n ebayclone
+      - name: Update deployment image
+        run: |
+          kubectl set image deployment/api-deployment \
+            api=${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+            -n ebayclone
 
-    - name: Wait for rollout
-      run: |
-        kubectl rollout status deployment/api-deployment -n ebayclone --timeout=5m
+      - name: Wait for rollout
+        run: |
+          kubectl rollout status deployment/api-deployment -n ebayclone --timeout=5m
 
-    - name: Verify deployment
-      run: |
-        kubectl get pods -n ebayclone
-        kubectl get svc -n ebayclone
+      - name: Verify deployment
+        run: |
+          kubectl get pods -n ebayclone
+          kubectl get svc -n ebayclone
 
   # Performance Testing
   performance-test:
@@ -151,26 +152,26 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup JMeter
-      run: |
-        wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
-        tar -xzf apache-jmeter-5.5.tgz
+      - name: Setup JMeter
+        run: |
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf apache-jmeter-5.5.tgz
 
-    - name: Run JMeter tests
-      run: |
-        ./apache-jmeter-5.5/bin/jmeter -n \
-          -t tests/performance/load-test.jmx \
-          -l results.jtl \
-          -e -o results/
+      - name: Run JMeter tests
+        run: |
+          ./apache-jmeter-5.5/bin/jmeter -n \
+            -t tests/performance/load-test.jmx \
+            -l results.jtl \
+            -e -o results/
 
-    - name: Upload JMeter results
-      uses: actions/upload-artifact@v3
-      with:
-        name: jmeter-results
-        path: results/
+      - name: Upload JMeter results
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-results
+          path: results/
 
   # Rollback on failure
   rollback:
@@ -193,7 +194,12 @@ jobs:
         run: |
           mkdir -p $HOME/.kube
           echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
-          hmod 600 $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Verify context
+        run: |
+          kubectl config current-context
+          kubectl get ns
 
       - name: Rollback deployment
         run: |
@@ -202,4 +208,3 @@ jobs:
       - name: Verify rollback
         run: |
           kubectl rollout status deployment/api-deployment -n ebayclone --timeout=5m
-
