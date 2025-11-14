@@ -1,1 +1,15 @@
 .vs/
+# Debug files
+*.log
+*.user
+*.suo
+*.orig
+
+# VS Code / Rider / Debug settings
+.vscode/
+*.csproj.user
+launchSettings.json
+*.DotSettings
+*.txt
+./obj
+./bin
