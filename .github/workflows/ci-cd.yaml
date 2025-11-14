@@ -94,7 +94,7 @@ jobs:
           context: .
           file: ./EbayClone.Web/Dockerfile.web
           push: true
-          tags: ghcr.io/thang0912527403/prn232/api:${{ github.sha }}
+          tags: ghcr.io/thang0912527403/prn232/web:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
