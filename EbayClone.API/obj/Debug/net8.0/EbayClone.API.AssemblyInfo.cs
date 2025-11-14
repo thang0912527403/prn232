@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EbayClone.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b2005b01d581dc8d5fa669b7d4c2b50b1cc0409")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40498d0aafb95b92bf835d01d06f58b14610891f")]
 [assembly: System.Reflection.AssemblyProductAttribute("EbayClone.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EbayClone.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
